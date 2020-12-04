@@ -24,6 +24,15 @@ namespace DinoMVC.Controllers
         {
             return View();
         }
+        public IActionResult ViewDino(int id)
+        {
+            Dino = _db.Dino.FirstOrDefault(d => d.Id == id);
+            if (Dino == null)
+            {
+                return NotFound();
+            }
+            return View(Dino);
+        }
 
         public IActionResult Upsert(int? id)
         {
@@ -67,10 +76,21 @@ namespace DinoMVC.Controllers
             return Json(new { data = await _db.Dino.ToListAsync() });
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get(int id)
+        {
+            var D = await _db.Dino.FirstOrDefaultAsync(d => d.Id == id);
+            if (D != null)
+            {
+                return Json(new { data = await _db.Dino.FirstOrDefaultAsync(d => d.Id == id)});
+            }
+            return Json(new { success = false, message = "Error getting Dino with id: "+id });
+        }
+
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {
-            var D = await _db.Dino.FirstOrDefaultAsync(u => u.Id == id);
+            var D = await _db.Dino.FirstOrDefaultAsync(d => d.Id == id);
             if (D != null)
             {
                 _db.Dino.Remove(D);

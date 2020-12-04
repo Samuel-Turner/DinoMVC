@@ -15,16 +15,19 @@ function loadDataTable() {
             { "data": "name", "width": "20%" },
             { "data": "period", "width": "20%" },
             { "data": "diet", "width": "20%" },
-            {
-                "data": "id",
-                "render": function (data) {
+            { "data":"id",
+                "render": function (dinoId) {
                     return `<div class="text-center">
-                        <a href="/dino/upsert?id=${data}" class='btn btn-success text-black' style='cursor:pointer; width:70px;'>
+                        <a href="/dino/viewDino?id=${dinoId}" class='btn btn-info text-black' style='cursor:pointer; width:100px;'>
+                            View Dino
+                        </a>
+                        &nbsp;
+                        <a href="/dino/upsert?id=${dinoId}" class='btn btn-success text-black' style='cursor:pointer; width:70px;'>
                             Edit
                         </a>
                         &nbsp;
                         <a class='btn btn-danger text-white' style='cursor:pointer; width:70px;'
-                            onclick=Delete('/dino/delete?id='+${data})>
+                            onclick=Delete('/dino/delete?id='+${dinoId})>
                             Delete
                         </a>
                         </div>`;

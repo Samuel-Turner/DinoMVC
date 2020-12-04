@@ -23,8 +23,19 @@
             <div class="col-4">
                 <label asp-for="@Model.Period"></label>
             </div>
-            <div class="col-8">
-                <input asp-for="@Model.Period" class="form-control" />
+            <div class="col-8 row">
+                <div class="col-4">
+                    <input asp-for="@Model.Period" type="radio" name="period" value="Cretaceous">
+                    <label>Cretaceous</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="@Model.Period" type="radio" name="period" value="Jurassic">
+                    <label>Jurassic</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="@Model.Period" type="radio" name="period" value="Triassic" checked="checked">
+                    <label>Triassic</label><br>
+                </div>
             </div>
             <span asp-validation-for="@Model.Period" class="text-danger"></span>
         </div>
@@ -32,8 +43,19 @@
             <div class="col-4">
                 <label asp-for="@Model.Diet"></label>
             </div>
-            <div class="col-8">
-                <input asp-for="@Model.Diet" class="form-control" />
+            <div class="col-8 row">
+                <div class="col-4">
+                    <input asp-for="@Model.Diet" type="radio" name="diet" value="Herbivore">
+                    <label>Herbivore</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="@Model.Diet" type="radio" name="diet" value="Omnivore">
+                    <label>Omnivore</label>
+                </div>
+                <div class="col-4">
+                    <input asp-for="@Model.Diet" type="radio" name="diet" value="Carnivore" checked="checked">
+                    <label>Carnivore</label><br>
+                </div>
             </div>
             <span asp-validation-for="@Model.Diet" class="text-danger"></span>
         </div>
